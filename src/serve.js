@@ -1,6 +1,6 @@
 const express = require('express');
 const cors = require('cors');
-const localRoutes = require('../routes/local.router.js');
+const localRoutes = require('./routes/local.router.js');
 
 const app = express();
 const PORT = 3000;
