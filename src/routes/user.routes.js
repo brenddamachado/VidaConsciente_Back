@@ -17,52 +17,59 @@ userRouter.post("/createUser", async (req,res)=>{
     }
 })
 
-userRouter.get("/getAllUser", (req,res)=>{
-    const findUser = getUser()
-    if (findUser.length < 1) {
-        res.send('Nenhum usuário cadastrado')
-    
-    } else {
-        res.status(201).json(findUser)    
+userRouter.get("/getAllUsers", async (req, res) => {
+    try {
+        const findUser = await getUser();
+        if (findUser.length < 1) {
+            return res.status(404).json({ message: 'Nenhum usuário cadastrado' });
+        } else {
+            return res.status(200).json(findUser);
+        }
+    } catch (error) {
+        return res.status(500).json({ message: 'Failed to fetch users', error: error.message });
     }
-})
+});
 
-
-userRouter.get("/getUser/:id", (req,res)=>{
-
+userRouter.get("/getUser/:id", (req, res) => {
     const { id } = req.params;
-
-    const user = getAllUsers.find(users => users.id == id);
+    const user = getAllUsers.find(user => user.id == id);
 
     if (user) {
         return res.status(200).json(user);
-        
     } else {
         return res.status(404).json({ message: 'User not found' });
-        
+    }
+});
+
+
+
+userRouter.put("/uptadeUser/:id",(req,res)=>{
+    const { id } = req.params;
+    const updatedData = req.body;
+
+    try {
+        const updatedUser = updateUser(id, updatedData);
+        return res.status(200).json({ message: 'User updated successfully', data: updatedUser });
+    } catch (error) {
+        return res.status(404).json({ message: error.message });
     }
 
 })
 
-// userRouter.put('/uptadeUser/:id',(req,res)=>{
-//     const { id } = req.params;
-//     const { name, email, password, age, gender, sexualOrientation, medicalHistory } = req.body;
 
-//     const userIndex = getAllUsers.findIndex(index => index.id === id);
+userRouter.delete("/deleteUser/:id",(req,res)=>{
 
-//     if (userIndex !== -1) {
-        
-//         getAllUsers[userIndex] = {
-//             ...getAllUsers[userIndex],  
-//             name, email, password, age, gender, sexualOrientation, medicalHistory };
+    const { id } = req.params;
+    
+    try {
+        const deletedUser = deleteUser(id);
+        return res.status(200).json({ message: 'User deleted successfully', data: deletedUser });
+    } catch (error) {
+        return res.status(404).json({ message: error.message });
+    }
 
-//             return res.status(200).json({ message: 'User updated successfully', data: getAllUsers[userIndex] });
-//         }else{
-//             return res.status(404).json({ message: 'User not found' });
-//         }
 
-// })
-
+})
 
 
 
