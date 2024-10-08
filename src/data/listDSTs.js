@@ -92,5 +92,35 @@ export const listDSTs = [
             "Antivirais (aciclovir, valaciclovir)",
             "Tratamento dos sintomas"
         ]
-    }
+    },
+    {
+        "idDisease": "e6f7g8h9-i1j2-3456-klmn-7890opq12345",
+        "name": "HIV",
+        "type": "Viral",
+        "symptoms": [
+            "Febre",
+            "Dor de garganta",
+            "Cansaço extremo",
+            "Perda de peso inexplicada",
+            "Suores noturnos",
+            "Diarreia persistente"
+        ],
+        "transmission": [
+            "Relações sexuais sem proteção",
+            "Compartilhamento de agulhas e seringas",
+            "Transfusão de sangue contaminado",
+            "De mãe para filho durante gravidez, parto ou amamentação"
+        ],
+        "prevention": [
+            "Uso de preservativos",
+            "Uso de antirretrovirais (PrEP e PEP)",
+            "Evitar compartilhamento de seringas",
+            "Testagem regular para HIV"
+        ],
+        "treatment": [
+            "Terapia antirretroviral (TARV)",
+            "Acompanhamento médico regular",
+            "Manutenção de uma vida saudável"
+        ]
+    }    
 ];
