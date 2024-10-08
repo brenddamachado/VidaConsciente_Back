@@ -1,5 +1,5 @@
 import { Router } from "express";
-import { createDisease, deleteDisease, searchAll, searchName, updateDisease } from "../controllers/diseasesSTDs.controller.js"
+import { createDisease, deleteDisease, searchAll, searchName, updateDisease } from "../controllers/DiseasesSTDs.controller.js"
 
 
 const diseaseRouter = Router();
