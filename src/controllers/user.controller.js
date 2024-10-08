@@ -27,7 +27,7 @@ export const updateUser = (id, updateData) =>{
 
     if(findUserIndex !== -1){
 
-        getAllUsers[userIndex] = {
+        getAllUsers[findUserIndex] = {
             ...getAllUsers[findUserIndex],
             ...updateData
         }

@@ -43,7 +43,7 @@ userRouter.get("/getUser/:id", (req, res) => {
 
 
 
-userRouter.put("/uptadeUser/:id",(req,res)=>{
+userRouter.put("/updateUser/:id",(req,res)=>{
     const { id } = req.params;
     const updatedData = req.body;
 
