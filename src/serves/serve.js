@@ -1,5 +1,3 @@
-
-
 const express = require('express');
 const cors = require('cors');
 const localRoutes = require('../routes/local.router.js');
