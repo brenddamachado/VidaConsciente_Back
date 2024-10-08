@@ -1,5 +1,5 @@
 import { Router } from "express";
-import { createDisease, searchAll } from "../controllers/DiseasesSTDs.controller.js";
+import { createDisease, deleteDisease, searchAll, searchName, updateDisease } from "../controllers/DiseasesSTDs.controller.js"
 
 
 const diseaseRouter = Router();
@@ -13,6 +13,25 @@ diseaseRouter.post("/newDisease", (req, res) =>{
 diseaseRouter.get("/searchAll", (req, res) =>{
     const AllDisease = searchAll();
     res.status(200).json({AllDisease});
+});
+
+diseaseRouter.get("/searchName/:name", (req, res) =>{
+    const { name } = req.params;
+    const diseaseName = searchName(name);
+    res.status(200).json({diseaseName});
+});
+
+diseaseRouter.patch("/updateInfDisease/:id", (req, res) =>{
+    const { id } = req.params;
+    const informacao = req.body;
+    const newInformacao = updateDisease(id, informacao);
+    res.status(200).json({ newInformacao });
+});
+
+diseaseRouter.delete("/deleteDisease/:id", (req, res) =>{
+    const { id } = req.params;
+    const diseaseDelete = deleteDisease(id);
+    res.status(200).json({ diseaseDelete });
 });
 
 export { diseaseRouter }
