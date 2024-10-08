@@ -1,11 +1,9 @@
 {
   "name": "vidaconsciente_back",
   "version": "1.0.0",
-  "description": "",
   "main": "index.js",
-  "type": "module",
   "scripts": {
-     "dev": "nodemon app.js",
+    "dev": "nodemon src/serves/server.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [],
@@ -14,10 +12,11 @@
   "dependencies": {
     "body-parser": "^1.20.3",
     "cors": "^2.8.5",
-    "express": "^4.21.0",
+    "express": "^4.21.1",
     "sequelize": "^6.37.4"
   },
   "devDependencies": {
     "nodemon": "^3.1.7"
-  }
+  },
+  "description": ""
 }
