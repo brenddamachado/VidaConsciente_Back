@@ -1,13 +1,14 @@
-import { UUIDV4 } from "sequelize";
+import { v4 as uuidv4 } from 'uuid'
 
 export class User {
 
-    constructor(name, email, password, age,sexualOrientation, medicalHistory){
-        this.id = UUIDV4;
+    constructor(name, email, password, age,gender, sexualOrientation, medicalHistory){
+        this.id = uuidv4;
         this.name = name;
         this.email = email;
         this.password = password;
         this.age = age;
+        this.gender = gender
         this.sexualOrientation = sexualOrientation;
         this.medicalHistory = medicalHistory;
     

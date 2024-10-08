@@ -1,30 +1,51 @@
-import { Sequelize } from "sequelize";
 import { User } from "../models/User.model.js";
 
 
-export const createUser =  async (name, email, password, age,sexualOrientation, medicalHistory) => {
+export const createUser =  async (name, email, password, age,gender, sexualOrientation, medicalHistory) => {
      
-    const creatingUsers = await User.create({name, email, password, age,sexualOrientation, medicalHistory});
+    const creatingUsers = await new User(name, email, password, age, gender,sexualOrientation, medicalHistory);
     
-    getAll.push(creatingUsers);
+    getAllUsers.push(creatingUsers);
 
     return creatingUsers;
 };
 
 
-const  getAll = []
+export const  getAllUsers = []
 
 export const getUser = async () => {
-    const users = await User.findAll(); 
-    return users;
+
+    return getAllUsers;
 };
 
 
-export const updateUser = () => {
 
+
+
+export const updateUser = (id, updateData) =>{
+    const findUserIndex = getAllUsers.findIndex(index => index.id == id);
+
+    if(findUserIndex !== -1){
+
+        getAllUsers[userIndex] = {
+            ...getAllUsers[findUserIndex],
+            ...updateData
+        }
+        return getAllUsers[findUserIndex];
+    }else{
+        throw new Error('User not found');
+    }
 };
 
 
-export const deleteUser = () => {
+export const deleteUser = (id) => {
+    const userIndex = getAllUsers.findIndex(index => index.id === id);
 
+    if (userIndex !== -1) {
+        const deletedUser = getAllUsers.splice(userIndex, 1);  
+        return deletedUser[0]
+    } else {
+        throw new Error('User not found');
+    }
 };
+
