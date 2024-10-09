@@ -2,19 +2,22 @@ import express from "express";
 import cors from "cors";
 import { diseaseRouter } from "./routes/router.js";
 import { userRouter } from "./routes/user.routes.js";
+import localRoutes from './routes/local.router.js';
 
 const app = express();
-const port = 3000;
+const PORT = 3000;
 
 app.use(cors());
 app.use(express.json());
-app.use(diseaseRouter);
-app.use(userRouter)
 
-app.listen(port, () =>{
-    console.log(`Example app listening on port ${port}`);
+app.get('/', (req, res) => {
+    res.send('Welcome to the Testing and Treatment Locations API!');
 });
 
+app.use('/api/locations', localRoutes);
+app.use(diseaseRouter);
+app.use(userRouter);
 
-
-
+app.listen(PORT, () => {
+    console.log(`Server running at http://localhost:${PORT}`);
+});
