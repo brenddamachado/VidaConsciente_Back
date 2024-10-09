@@ -1,4 +1,5 @@
 import express from 'express';
+
 import {casesRouter} from "./src/routes/router.js";
 
 const app = express();
