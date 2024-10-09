@@ -1,6 +1,8 @@
-const express = require('express');
-const cors = require('cors');
-const localRoutes = require('./routes/local.router.js');
+import express from "express";
+import cors from "cors";
+import { diseaseRouter } from "./routes/router.js";
+import { userRouter } from "./routes/user.routes.js";
+import localRoutes from './routes/local.router.js';
 
 const app = express();
 const PORT = 3000;
@@ -13,6 +15,8 @@ app.get('/', (req, res) => {
 });
 
 app.use('/api/locations', localRoutes);
+app.use(diseaseRouter);
+app.use(userRouter);
 
 app.listen(PORT, () => {
     console.log(`Server running at http://localhost:${PORT}`);
