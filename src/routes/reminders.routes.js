@@ -9,11 +9,11 @@ const remindersRouter = Router();
 remindersRouter.post("/addReminder", createReminder);
 
 
+
 remindersRouter.get("/getReminders", fetchReminders);
 
 
 remindersRouter.delete("/deleteReminder/:id", removeReminder);
-
 
 remindersRouter.patch("/editReminder/:id", editReminder);
 
