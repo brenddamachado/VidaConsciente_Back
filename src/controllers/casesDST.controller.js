@@ -21,3 +21,20 @@ export const deleteCase= (caseId) =>{
         return "Caso inexistente"
     }
 }
+
+export const updateCase =(id,updateCase) =>{
+  
+    const indexCase = listCasesDST.findIndex(caseIndex => caseIndex.idCase == parseInt(id));
+
+
+    if (indexCase ==! -1) {
+        listCasesDST[indexCase] = {
+            ...listCasesDST[indexCase],
+            ...updateCase
+        }
+        return listCasesDST[indexCase];
+    } else {
+        throw new Error('Caso inexistente')
+    }
+
+}
