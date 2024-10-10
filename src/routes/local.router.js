@@ -1,10 +1,11 @@
-const express = require('express');
+import express from 'express';
+import { getLocation, addLocations, updateLocations, deleteLocations } from '../controllers/local.controller.js';
+
 const router = express.Router();
-const LocalController = require('../controllers/local.controller');
 
-router.get('/', LocalController.getLocations);
-router.post('/', LocalController.addLocation);
-router.put('/:id', LocalController.updateLocation);
-router.delete('/:id', LocalController.deleteLocation);
+router.get('/locations', getLocation);
+router.post('/locations', addLocations);
+router.put('/locations/:id', updateLocations);
+router.delete('/locations/:id', deleteLocations);
 
-module.exports = router;
+export default router;

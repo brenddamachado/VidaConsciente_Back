@@ -1,39 +1,32 @@
-const LocalModel = require('../models/local.model');
+import { getLocations, addLocation, updateLocation, deleteLocation } from '../models/local.model.js';
 
-const getLocations = (req, res) => {
-    const locations = LocalModel.getLocations();
+export const getLocation = (req, res) => {
+    const locations = getLocations();
     res.json(locations);
 };
 
-const addLocation = (req, res) => {
+export const addLocations = (req, res) => {
     const { name, address, hours, serviceType } = req.body;
-    const newLocation = LocalModel.addLocation({ name, address, hours, serviceType });
+    const newLocation = addLocation({ name, address, hours, serviceType });
     res.status(201).json(newLocation);
 };
 
-const updateLocation = (req, res) => {
+export const updateLocations = (req, res) => {
     const { id } = req.params;
-    const updatedLocation = LocalModel.updateLocation(parseInt(id), req.body);
+    const updatedLocation = updateLocation(parseInt(id), req.body);
     if (updatedLocation) {
         res.json(updatedLocation);
     } else {
-        res.status(404).json({ message: 'Location not found' });
+        res.status(400).json({ message: 'Local não encontrado' });
     }
 };
 
-const deleteLocation = (req, res) => {
+export const deleteLocations = (req, res) => {
     const { id } = req.params;
-    const deleted = LocalModel.deleteLocation(parseInt(id));
+    const deleted = deleteLocation(parseInt(id));
     if (deleted) {
-        res.status(204).send();
+        res.status(200).json({ message: 'Local deletado com sucesso!' });
     } else {
-        res.status(404).json({ message: 'Location not found' });
+        res.status(400).json({ message: 'Não foi possível encontrar o local' });
     }
-};
-
-module.exports = {
-    getLocations,
-    addLocation,
-    updateLocation,
-    deleteLocation
 };

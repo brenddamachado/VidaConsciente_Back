@@ -1,4 +1,4 @@
-class Local {
+export default class Local {
     constructor(id, name, address, hours, serviceType) {
         this.id = id;
         this.name = name;
@@ -21,17 +21,17 @@ let locations = [
     new Local(10, 'Laboratório Manaus', 'Av. Eduardo Ribeiro, 333, AM', '09:00 - 16:00', 'Tratamento de DSTs')
 ];
 
-let idCounter = locations.length + 1;
+export let idCounter = locations.length + 1;
 
-const getLocations = () => locations;
+export const getLocations = () => locations;
 
-const addLocation = (location) => {
+export const addLocation = (location) => {
     location.id = idCounter++;
-    locations.push(location);
+    locations.push(new Local(location.id, location.name, location.address, location.hours, location.serviceType));
     return location;
 };
 
-const updateLocation = (id, updatedLocation) => {
+export const updateLocation = (id, updatedLocation) => {
     const index = locations.findIndex((location) => location.id === id);
     if (index !== -1) {
         locations[index] = { ...locations[index], ...updatedLocation };
@@ -40,17 +40,10 @@ const updateLocation = (id, updatedLocation) => {
     return null;
 };
 
-const deleteLocation = (id) => {
+export const deleteLocation = (id) => {
     const index = locations.findIndex((location) => location.id === id);
     if (index !== -1) {
         return locations.splice(index, 1);
     }
     return null;
-};
-
-module.exports = {
-    getLocations,
-    addLocation,
-    updateLocation,
-    deleteLocation
 };
