@@ -4,9 +4,7 @@ import { diseaseRouter } from "./routes/disease.routes.js";
 import { userRouter } from "./routes/user.routes.js";
 import { casesRouter } from "./routes/router.js";
 import router from "./routes/local.router.js";
-import { diseaseRouter } from "./routes/router.js";
 import { remindersRouter } from "./routes/reminders.routes.js";
-import { userRouter } from "./routes/user.routes.js";
 
 
 
