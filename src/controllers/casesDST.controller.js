@@ -12,10 +12,10 @@ export const searchAll = () => {
 }
 
 export const deleteCase= (caseId) =>{
-    const idCaseExist = listCasesDST.find(id => id.idCase === caseId);
+    const idCaseExist = listCasesDST.find(id => id.idCase === parseInt(caseId));
     if(idCaseExist) {
-        let index = listCasesDST.findIndex(id => id.idCase === caseId);
-        listCasesDST.splice(indexCase,1);
+        let index = listCasesDST.findIndex(id => id.idCase === parseInt(caseId));
+        listCasesDST.splice(index,1);
         return "Caso removido com sucesso"
     }else{
         return "Caso inexistente"
