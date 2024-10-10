@@ -1,5 +1,5 @@
 import { Router } from 'express'
-import { createCase, searchAll } from "../controllers/casesDST.controller.js";
+import { createCase, searchAll, deleteCase } from "../controllers/casesDST.controller.js";
 
 const casesRouter = Router();
 
@@ -13,5 +13,13 @@ casesRouter.get("/searchAll", (req, res)=>{
     const Allcases = searchAll();
     res.status(200).json({Allcases});
 });
+
+casesRouter.delete("/eraseCase/:id", (req, res)=>{
+    const {id} = req.params;
+    const deletedCase = deleteCase(id);
+    res.status(200).json({deletedCase})
+})
+
+
 
 export {casesRouter}
