@@ -2,7 +2,7 @@ import express from "express";
 import cors from "cors";
 import { diseaseRouter } from "./routes/disease.routes.js";
 import { userRouter } from "./routes/user.routes.js";
-import { casesRouter } from "./routes/router.js";
+import { casesRouter } from "./routes/case.routes.js";
 import router from "./routes/local.routes.js";
 import { remindersRouter } from "./routes/reminders.routes.js";
 
