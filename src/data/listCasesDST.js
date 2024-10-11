@@ -6,3 +6,4 @@ export const listCasesDST = [
     {"idCase":5, "name":"Herpes Genital", "casesByYear": {"2020": 490, "2021":960, "2022":820}},
     {"idCase":6, "name":"HIV", "casesByYear": {"2020": 500, "2021":550, "2022":740}},
 ];
+

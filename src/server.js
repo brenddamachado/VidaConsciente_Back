@@ -3,7 +3,7 @@ import cors from "cors";
 import { diseaseRouter } from "./routes/disease.routes.js";
 import { userRouter } from "./routes/user.routes.js";
 import { casesRouter } from "./routes/router.js";
-import router from "./routes/local.router.js";
+import router from "./routes/local.routes.js";
 import { remindersRouter } from "./routes/reminders.routes.js";
 
 
@@ -18,8 +18,6 @@ app.get('/', (req, res) => {
     res.send('Welcome to the Testing and Treatment Locations API!');
 });
 
-// app.use('/api/locations', localRoutes);
-// app.use(localR)
 app.use(router);
 
 app.get('/', (req, res) => {
@@ -31,7 +29,8 @@ app.use(diseaseRouter);
 app.use(userRouter);
 app.use(casesRouter); 
 app.use(userRouter);
-app.use('/api/reminders', remindersRouter);
+// app.use('/api/reminders', remindersRouter);
+app.use(remindersRouter)
 
 
 app.listen(PORT, () => {
