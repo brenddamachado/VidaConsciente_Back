@@ -9,7 +9,7 @@ casesRouter.post("/newCase", (req, res)=>{
     res.status(201).json({newCase});
 })
 
-casesRouter.get("/searchAll", (req, res)=>{
+casesRouter.get("/searchAllCases", (req, res)=>{
     const Allcases = searchAll();
     res.status(200).json({Allcases});
 });
