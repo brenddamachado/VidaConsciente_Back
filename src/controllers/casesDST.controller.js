@@ -7,7 +7,7 @@ export const createCase = (name, casesByYear) => {
     return cases;
 }
 
-export const searchAll = () => {
+export const searchAllDST = () => {
     return listCasesDST;
 }
 
@@ -22,19 +22,17 @@ export const deleteCase= (caseId) =>{
     }
 }
 
-export const updateCase =(id,updateCase) =>{
+export const updateCase = (id, updateCase) => {
+    const indexCase = listCasesDST.findIndex(caseIndex => caseIndex.idCase === parseInt(id));
   
-    const indexCase = listCasesDST.findIndex(caseIndex => caseIndex.idCase == parseInt(id));
-
-
-    if (indexCase ==! -1) {
-        listCasesDST[indexCase] = {
-            ...listCasesDST[indexCase],
-            ...updateCase
-        }
-        return listCasesDST[indexCase];
+    if (indexCase !== -1) {
+      listCasesDST[indexCase] = {
+        ...listCasesDST[indexCase],
+        ...updateCase
+      };
+      return listCasesDST[indexCase];
     } else {
-        throw new Error('Caso inexistente')
+      throw new Error('Caso inexistente');
     }
-
-}
+  };
+  
