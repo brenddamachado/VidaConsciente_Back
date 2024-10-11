@@ -12,12 +12,13 @@ export const searchAll = () =>{
     return listDSTs;
 }
 
-export const searchName = (nameDisease) =>{
-    const nameExist = listDSTs.filter(nameSearch => nameSearch.name.toLowerCase().includes(nameDisease.toLowerCase()));
-    if(nameExist.length > 0){
-        return nameExist;
-    }else{
-        return "Nenhuma doença encontrada com esse nome";
+export const searchName = (nameDisease) => {
+    const nameExist = listDSTs.filter(nameSearch => nameSearch.name && nameSearch.name.toLowerCase().includes(nameDisease.toLowerCase()));
+    if (nameExist.length > 0) {
+        return nameExist
+        
+    } else {
+        return "Nenhuma doença encontrada com esse nome"
     }
 }
 

@@ -21,7 +21,7 @@ diseaseRouter.get("/searchName/:name", (req, res) =>{
     res.status(200).json({diseaseName});
 });
 
-diseaseRouter.patch("/updateInfDisease/:id", (req, res) =>{
+diseaseRouter.put("/updateInfDisease/:id", (req, res) =>{
     const { id } = req.params;
     const informacao = req.body;
     const newInformacao = updateDisease(id, informacao);
