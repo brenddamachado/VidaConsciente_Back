@@ -24,10 +24,40 @@ tratamentos, prevenção, os tipos e os casos de DSTs/ISTs e entre outras inform
  - UUIDv4
  - Nodemon
 
+## 📜 Algumas informações importantes para melhor entendimento
+
+- O que é API?
+  
+    API é Interface de Programação de Aplicações. Utilizando a analogia do garçom, API leva pedidos de um aplicativo a um serviço e traz as respostas de volta. Ela facilita a comunicação entre diferentes sistemas, permitindo que eles troquem informações sem precisar saber exatamente como funcionam por dentro.
+
+- O que é API's REST?
+  
+    APIs REST (Representational State Transfer) são um tipo específico de API que segue um conjunto de princípios e regras para a troca de informações entre sistemas.
+
+- Métodos HTTP
+    - GET: Recuperar dados de um servidor.
+    - POST:  Enviar dados para o servidor para criar um novo recurso.
+    - PATCH: Atualizar parcialmente(modificação de apenas dado) um recurso existente
+    - PUT: Atualizar completamente(modifica mais de um dado) um recurso existente no servidor.
+    - DELETE: Remover um recurso do servidor.
+
+- Status de resposta HTTP
+    - 1xx - Informativo
+    - 2xx - Sucesso
+    - 3xx - Redirecionamento
+    - 4xx - Erro do Cliente
+    - 5xx - Erro do Servidor
+
+- O que é DST/ISTs?
+  
+    DSTs (Doenças Sexualmente Transmissíveis) ou ISTs (Infecções Sexualmente Transmissíveis) são doenças ou infecções que são transmitidas principalmente por meio do contato sexual sem proteção, seja vaginal, anal ou oral. Elas podem ser causadas por bactérias, vírus, fungos ou parasitas. O termo "IST" é mais recente e vem sendo usado com mais frequência, pois destaca que uma pessoa pode estar infectada e transmitir a doença mesmo sem apresentar sintomas aparentes.
+
+    Entre as DSTs/ISTs mais comuns estão: HIV/AIDS, sífilis, gonorreia, clamídia, herpes genital, HPV e tricomoníase. A prevenção dessas doenças é feita principalmente com o uso de preservativos e pela educação sobre práticas sexuais seguras.
+
 ## ⚙ Funcionalidades
 O desenvolvimento da API Vida Consciente foi dividido em quatro APIs principais, cada uma responsável por uma área específica da aplicação. Todas as APIs seguem o padrão de operações CRUD (Create, Read, Update, Delete), permitindo o gerenciamento completo dos dados relacionados.
 
-#### 1. API de Usuário
+### 1. API de Usuário
 Esta API será responsável pelo gerenciamento dos dados de perfil. 
 
 - **Cadastrar Usuários**: Permite a criação de novos usuários.
@@ -35,7 +65,16 @@ Esta API será responsável pelo gerenciamento dos dados de perfil.
 - **Atualizar perfil**: Edição de informações dos dados pessoais.
 - **Excluir Conta**: Remoção de usuários da plataforma.
 
-#### 2. API de Conscientização sobre DSTs/ISTs
+#### Rotas sobre usuário - user.routes.js
+| Método | Rota                                | Função                                            |
+| ------ | ----------------------------------- | ------------------------------------------------- |
+| POST   | /createUser                         | Operação de cadastro de usuário                   |
+| GET    | /getAllUsers                        | Operação de buscar todos os usuários registrados  |
+| GET    | /getUser/:id                        | Operação de busca de usuário por id               |
+| PUT    | /updateUser/:id                     | Operação de atualizar os dados por id             |
+| DELETE | /deleteUser/:id                     | Operação de deletar usuário via id                |
+
+### 2. API de Conscientização sobre DSTs/ISTs
 O site terá uma página dedicada a fornecer informações sobre diferentes tipos de DSTs/ISTs, mostrando os sintomas, métodos de prevenção e possíveis tratamentos. Isso ajudará a educar os usuários sobre o tema, desmistificando conceitos e incentivando a prevenção. 
 
 - **Listar as DSTs/ISTs** - Lista as DSTs/ISTs cadastrado no sistema.
@@ -44,7 +83,16 @@ O site terá uma página dedicada a fornecer informações sobre diferentes tipo
 - **Editar informações existentes** - Editar a lista de doenças disponíveis.
 - **Excluir doenças** -  Excluir por meio da busca do id da doença.
 
-#### 3. API de Mapeamento de locais de testagem e tratamento
+#### Rotas sobre informações da DSTs - disease.routes.js
+| Método | Rota                                | Função                                            |
+| ------ | ----------------------------------- | ------------------------------------------------- |
+| POST   | /newDisease                         | Operação de cadastro de informação sobre DST      |
+| GET    | /searchAll                          | Operação de buscar todos as informações           |
+| GET    | /searchName/:name                   | Operação de busca de informação por nome da DST   |
+| PUT    | /updateInfDisease/:id               | Operação de atualizar as informações              |
+| DELETE | /deleteDisease/:id                  | Operação de deletar informação via id             |
+
+### 3. API de Mapeamento de locais de testagem e tratamento
 Essa API permitirá que os usuários encontrem clínicas e laboratórios especializados perto de onde estão.
 
 - **Adicionar novos locais de testagem ou tratamento** - Ampliação de locais para testagem e tratamento, facilitando o acesso das pessoas.
@@ -52,8 +100,15 @@ Essa API permitirá que os usuários encontrem clínicas e laboratórios especia
 - **Atualizar informações** - Manter os dados atualizados dos locais.
 - **Remover local** - Excluir locais que não estão mais disponíveis 
 
+#### Rotas sobre local de testagem e tratamento - local.routes.js
+| Método | Rota                                | Função                                            |
+| ------ | ----------------------------------- | ------------------------------------------------- |
+| POST   | /locations                          | Operação de cadastro de localidade                |
+| GET    | /locations                          | Operação de buscar todos os locais registrados    |
+| PUT    | /locations/:id                      | Operação de atualizar os dados por id             |
+| DELETE | /locations/:id                      | Operação de deletar localidade via id             |
 
-#### 4. API de Casos de DSTs
+### 4. API de Casos de DSTs
 Essa API permitirá o gerenciamento de dados de casos de DSTs por ano.
 
 - **Criar novo registro de casos** - Permitir que o administrador adicione novos registros de casos para um determinado ano e tipo de doença.
@@ -61,6 +116,13 @@ Essa API permitirá o gerenciamento de dados de casos de DSTs por ano.
 - **Atualizar informações do caso** - Permitir a atualização dos dados de um registro específico, como corrigir o número de casos ou alterar o ano de referência.
 - **Excluir registros de casos** - Exclusão de registro de caso, se for necessário.
 
+#### Rotas sobre casos de DSTs - case.routes.js
+| Método | Rota                                | Função                                            |
+| ------ | ----------------------------------- | ------------------------------------------------- |
+| POST   | /newCase                            | Operação de cadastro de casos                     |
+| GET    | /searchAllCases                     | Operação de buscar todos os casos registrados     |
+| PUT    | /updateCase/:id                     | Operação de atualizar os dados por id             |
+| DELETE | /eraseCase/:id                      | Operação de deletar caso via id                   |
 
 ## ▶ Como rodar
 Para clonar e rodar este projeto, você precisará do Git e do Node.js instalados em sua máquina.
@@ -82,6 +144,10 @@ Para clonar e rodar este projeto, você precisará do Git e do Node.js instalado
   npm run dev
     ```
   Se não quiser clonar o repositório pode baixar o zip do projeto, pelo botão code você verá o ``` Downloand ZIP ```, é só clicar que já irá baixar na sua máquina.
+
+## 🧪 Testes
+Atualmente, os testes podem ser feitos manualmente utilizando ferramentas como o [Postman](https://www.postman.com/downloads/) ou [Insomnia](https://insomnia.rest/download), para testar as funcionalidades das rotas listadas anteriormente.
+
   
 ## 💻 Colaboradores
 - [Brenda Machado](https://github.com/brenddamachado)
