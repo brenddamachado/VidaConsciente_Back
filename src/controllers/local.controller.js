@@ -6,8 +6,8 @@ export const getLocation = (req, res) => {
 };
 
 export const addLocations = (req, res) => {
-    const { name, address, hours, serviceType } = req.body;
-    const newLocation = addLocation({ name, address, hours, serviceType });
+    const { name, address, hours, serviceType, latitude, longitude } = req.body; 
+    const newLocation = addLocation({ name, address, hours, serviceType, latitude, longitude }); 
     res.status(201).json(newLocation);
 };
 
