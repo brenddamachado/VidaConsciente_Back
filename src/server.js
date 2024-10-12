@@ -19,18 +19,14 @@ app.get('/', (req, res) => {
 });
 
 app.use(router);
-
-app.get('/', (req, res) => {
-    res.send('Welcome to the Testing and Treatment Locations API!');
-});
-
-
 app.use(diseaseRouter);
 app.use(userRouter);
 app.use(casesRouter); 
-app.use(userRouter);
-// app.use('/api/reminders', remindersRouter);
-app.use(remindersRouter)
+app.use('/api', userRouter);
+
+
+app.use('/api/reminders', remindersRouter);
+
 
 
 app.listen(PORT, () => {
