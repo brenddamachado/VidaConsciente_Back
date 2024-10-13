@@ -21,17 +21,28 @@ diseaseRouter.get("/searchName/:name", (req, res) =>{
     res.status(200).json({diseaseName});
 });
 
-diseaseRouter.put("/updateInfDisease/:id", (req, res) =>{
-    const { id } = req.params;
-    const informacao = req.body;
-    const newInformacao = updateDisease(id, informacao);
-    res.status(200).json({ newInformacao });
-});
+diseaseRouter.put('/diseases/:id', (req, res) => {
+    const diseaseId = req.params.id;
+    const updatedData = req.body;
+  
+    const updatedDisease = updateDisease(diseaseId, updatedData);
+    if (updatedDisease === "Esse id não existe no sistema.") {
+      return res.status(404).json({ message: 'Doença não encontrada.' });
+    }
+  
+    return res.status(200).json(updatedDisease);
+  });
 
-diseaseRouter.delete("/deleteDisease/:id", (req, res) =>{
-    const { id } = req.params;
-    const diseaseDelete = deleteDisease(id);
-    res.status(200).json({ diseaseDelete });
-});
+  diseaseRouter.delete('/diseases/:id', (req, res) => {
+    const diseaseId = req.params.id;
+  
+    const deletedMessage = deleteDisease(diseaseId);
+    if (deletedMessage === "Esse id não existe no sistema.") {
+      return res.status(404).json({ message: 'Doença não encontrada.' });
+    }
+  
+    return res.status(200).json({ message: 'Doença deletada com sucesso.' });
+  });
+ 
 
 export { diseaseRouter }
