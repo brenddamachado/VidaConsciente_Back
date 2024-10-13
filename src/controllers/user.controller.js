@@ -1,51 +1,107 @@
-import { User } from "../models/User.model.js";
+
+import { users } from '../data/user.js';
+import { v4 as uuidv4 } from 'uuid';
 
 
-export const createUser =  async (name, email, password, age,gender, sexualOrientation, medicalHistory) => {
-     
-    const creatingUsers = await new User(name, email, password, age, gender,sexualOrientation, medicalHistory);
-    
-    getAllUsers.push(creatingUsers);
+export const registerUser = (req, res) => {
+    console.log('Dados recebidos:', req.body);
 
-    return creatingUsers;
+    const { name, email, password, birthDate, gender, phone, address, city, state, cep } = req.body;
+
+    if (!name || !email || !password) {
+        return res.status(400).json({ message: "Campos obrigatórios não preenchidos" });
+    }
+
+
+    const newUser = { 
+        id: uuidv4(),
+        name, 
+        email, 
+        password, 
+        birthDate, 
+        gender, 
+        phone, 
+        address, 
+        city, 
+        state, 
+        cep 
+    };
+
+    users.push(newUser);
+
+    return res.status(201).json({ message: "Usuário criado com sucesso!", data: newUser });
 };
 
 
-export const  getAllUsers = []
-
-export const getUser = async () => {
-
-    return getAllUsers;
+export const getAllUsers = (req, res) => {
+    if (users.length === 0) {
+        return res.status(404).json({ message: 'Nenhum usuário encontrado' });
+    }
+    return res.status(200).json(users);
 };
 
 
+export const getUserById = (req, res) => {
+    const { id } = req.params;
+    const user = users.find(user => user.id === id);
 
-
-
-export const updateUser = (id, updateData) =>{
-    const findUserIndex = getAllUsers.findIndex(index => index.id == id);
-
-    if(findUserIndex !== -1){
-
-        getAllUsers[findUserIndex] = {
-            ...getAllUsers[findUserIndex],
-            ...updateData
-        }
-        return getAllUsers[findUserIndex];
-    }else{
-        throw new Error('User not found');
+    if (user) {
+        return res.status(200).json(user);
+    } else {
+        return res.status(404).json({ message: 'Usuário não encontrado.' });
     }
 };
 
 
-export const deleteUser = (id) => {
-    const userIndex = getAllUsers.findIndex(index => index.id === id);
+export const updateUser = (req, res) => {
+    const { id } = req.params;
+    const { name, email, password, birthDate, gender, phone, address, city, state, cep } = req.body;
+
+    const userIndex = users.findIndex(user => user.id === id);
 
     if (userIndex !== -1) {
-        const deletedUser = getAllUsers.splice(userIndex, 1);  
-        return deletedUser[0]
+        users[userIndex] = {
+            ...users[userIndex],
+            name,
+            email,
+            password,
+            birthDate,
+            gender,
+            phone,
+            address,
+            city,
+            state,
+            cep
+        };
+
+        return res.status(200).json({ message: 'Usuário atualizado com sucesso', data: users[userIndex] });
     } else {
-        throw new Error('User not found');
+        return res.status(404).json({ message: 'Usuário não encontrado.' });
     }
 };
 
+
+export const deleteUser = (req, res) => {
+    const { id } = req.params;
+    const userIndex = users.findIndex(user => user.id === id);
+
+    if (userIndex !== -1) {
+        const deletedUser = users.splice(userIndex, 1);
+        return res.status(200).json({ message: 'Usuário deletado com sucesso', data: deletedUser });
+    } else {
+        return res.status(404).json({ message: 'Usuário não encontrado.' });
+    }
+};
+
+export const loginUser = (req, res) => {
+    const { email, password } = req.body;
+
+
+    const user = users.find(user => user.email === email && user.password === password);
+
+    if (!user) {
+        return res.status(401).json({ message: 'E-mail ou senha incorretos' });
+    }
+
+    return res.status(200).json({ message: 'Login bem-sucedido!', user });
+};
