@@ -160,7 +160,7 @@ Segue abaixo imagem de alguns testes:
 
 <h3>Busca por todos os usuários (get)</h3>
   <img src = "https://drive.google.com/uc?export=view&id=1mnidQdrJxe6SF0DQZVerKjsYQ7NXWn7b" width = "600px">
-  <p>Observa que na busca apareceu "Nenhum usuário cadastrado", pois não foi utilizado dados imbutido no código, então terá que ser feito o cadastramento antes de buscar</p>
+  <p>Observa que na busca apareceu "Nenhum usuário cadastrado", pois não foi inserido os dados no banco de dados mocado nessa api, então terá que ser feito o cadastramento antes de buscar</p>
   
 <h3>Cadastro de usuários (post)</h3>
   <img src = "https://drive.google.com/uc?export=view&id=1oSVHgFjKO_jfZ1a4PWON_iaqM8yQPiP6" width = "600px">
