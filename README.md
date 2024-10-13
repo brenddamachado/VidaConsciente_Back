@@ -146,9 +146,46 @@ Para clonar e rodar este projeto, você precisará do Git e do Node.js instalado
   Se não quiser clonar o repositório pode baixar o zip do projeto, pelo botão code você verá o ``` Downloand ZIP ```, é só clicar que já irá baixar na sua máquina.
 
 ## 🧪 Testes
-Atualmente, os testes podem ser feitos manualmente utilizando ferramentas como o [Postman](https://www.postman.com/downloads/) ou [Insomnia](https://insomnia.rest/download), para testar as funcionalidades das rotas listadas anteriormente.
+Os testes podem ser feitos de duas formas:
+- Manualmente utilizando ferramentas como o [Postman](https://www.postman.com/downloads/) ou [Insomnia](https://insomnia.rest/download), para testar as funcionalidades das rotas listadas anteriormente.
+- Via deploy
 
+Segue abaixo imagem de alguns testes:
+<div align = "center"> 
+  <h3>Busca todas as informações sobre DST (get)</h3>
+  <img src = "https://drive.google.com/uc?export=view&id=15cj7kxH2jdgajmkyZ6N8xJ0wRwVqqYvL"  width = "600px">
+ 
+  <h3>Busca por nome da doença (get)</h3>
+  <img src = "https://drive.google.com/uc?export=view&id=1HBryHhct9b0fMB_dK3JJSbdgGeZZkwJ7" width = "600px">
+
+<h3>Busca por todos os usuários (get)</h3>
+  <img src = "https://drive.google.com/uc?export=view&id=1mnidQdrJxe6SF0DQZVerKjsYQ7NXWn7b" width = "600px">
+  <p>Observa que na busca apareceu "Nenhum usuário cadastrado", pois não foi utilizado dados imbutido no código, então terá que ser feito o cadastramento antes de buscar</p>
   
+<h3>Cadastro de usuários (post)</h3>
+  <img src = "https://drive.google.com/uc?export=view&id=1oSVHgFjKO_jfZ1a4PWON_iaqM8yQPiP6" width = "600px">
+  <p>Agora há usuário para a realização da busca, segue a estrutura de exemplo para o post:</p>
+</div>
+
+ ```
+   {
+    "name": "Lucas Oliveira",
+    "email": "lucas.oliveira@example.com",
+    "password": "SenhaForte123",
+    "age": 28,
+    "gender": "Masculino",
+    "sexualOrientation": "Heterossexual",
+    "medicalHistory": "Nenhuma condição pré-existente"
+  }
+   ```
+ <p>Para inserir a estrutura tem que escolher o método POST, ir em body e escolher a estrutura Json, que é a estrutura acima.</p>
+
+## Conclusão
+
+O projeto Vida Consciente foi desenvolvido com o objetivo de oferecer uma plataforma educativa e acessível, promovendo a conscientização e o autocuidado em relação às infecções sexualmente transmissíveis (DSTs/ISTs). Através das funcionalidades CRUD implementadas nas quatro APIs principais, os usuários podem gerenciar informações pessoais, acessar dados sobre DSTs, localizar centros de testagem e tratamento, além de visualizar casos registrados. Esse projeto tem um papel fundamental ao tornar informações confiáveis mais acessíveis, contribuindo para a educação e a prevenção dessas doenças.
+
+Uma melhoria significativa para o futuro desenvolvimento do projeto seria a implementação de um banco de dados real para armazenar as informações, substituindo os dados atualmente mocados. Isso permitiria maior escalabilidade, segurança e flexibilidade na gestão dos dados, além de proporcionar uma experiência mais robusta para os usuários da plataforma.
+
 ## 💻 Colaboradores
 - [Brenda Machado](https://github.com/brenddamachado)
 - [Elzo íthalo](https://github.com/ithalloelzo)
