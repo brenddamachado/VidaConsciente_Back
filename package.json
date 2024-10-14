@@ -1,16 +1,15 @@
 {
   "name": "vidaconsciente_back",
   "version": "1.0.0",
-  "description": "",
+  "description": "API Vida Consciente - Gerenciamento de DSTs/ISTs e locais de testagem/tratamento",
   "main": "index.js",
   "type": "module",
   "scripts": {
-  "dev": "nodemon src/server.js",
-  "start": "node src/server.js", 
-  "test": "echo \"Error: no test specified\" && exit 1"
-},
-  "keywords": [],
-  "author": "",
+    "dev": "nodemon src/server.js",
+    "start": "node src/server.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Anny Gomes",
   "license": "ISC",
   "dependencies": {
     "body-parser": "^1.20.3",
