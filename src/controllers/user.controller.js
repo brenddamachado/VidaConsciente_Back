@@ -42,36 +42,33 @@ export const getAllUsers = (req, res) => {
 
 
 export const getUserById = (req, res) => {
-    const { id } = req.params;
-    const user = users.find(user => user.id === id);
+    const { id } = req.params;  
+    console.log(`Buscando usuário com ID: ${id}`);
+    
+    const user = users.find(user => user.id === id);  
 
     if (user) {
-        return res.status(200).json(user);
+        return res.status(200).json(user); 
     } else {
-        return res.status(404).json({ message: 'Usuário não encontrado.' });
+        return res.status(404).json({ message: 'Usuário não encontrado' });  
     }
 };
 
 
+
 export const updateUser = (req, res) => {
-    const { id } = req.params;
-    const { name, email, password, birthDate, gender, phone, address, city, state, cep } = req.body;
+    const { id } = req.params; 
+    const { name, email, city } = req.body; 
 
     const userIndex = users.findIndex(user => user.id === id);
 
     if (userIndex !== -1) {
+        
         users[userIndex] = {
-            ...users[userIndex],
-            name,
-            email,
-            password,
-            birthDate,
-            gender,
-            phone,
-            address,
-            city,
-            state,
-            cep
+            ...users[userIndex],  
+            name,  
+            email,  
+            city  
         };
 
         return res.status(200).json({ message: 'Usuário atualizado com sucesso', data: users[userIndex] });
