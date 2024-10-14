@@ -8,7 +8,7 @@ export const createDisease = (name, type, symptoms, transmission, prevention, tr
     return disease;
 }
 
-export const searchAll = () =>{
+export const searchAll = () => {
     return listDSTs;
 }
 
