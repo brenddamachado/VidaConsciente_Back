@@ -6,25 +6,27 @@ import { casesRouter } from "./routes/case.routes.js";
 import router from "./routes/local.routes.js";
 import { remindersRouter } from "./routes/reminders.routes.js";
 
+
+
 const app = express();
-
-
-const PORT = process.env.PORT || 3000;
+const PORT = 3000;
 
 app.use(cors());
 app.use(express.json());
-
 
 app.get('/', (req, res) => {
     res.send('Welcome to the Testing and Treatment Locations API!');
 });
 
+app.use(router);
+app.use(diseaseRouter);
+app.use(userRouter);
+app.use(casesRouter); 
+app.use('/api', userRouter);
 
-app.use(router); 
-app.use('/api/diseases', diseaseRouter); 
-app.use('/api/users', userRouter); 
-app.use('/api/cases', casesRouter);
-app.use('/api/reminders', remindersRouter); 
+
+app.use('/api/reminders', remindersRouter);
+
 
 
 app.listen(PORT, () => {
