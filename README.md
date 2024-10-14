@@ -124,25 +124,49 @@ Essa API permitirá o gerenciamento de dados de casos de DSTs por ano.
 | PUT    | /updateCase/:id                     | Operação de atualizar os dados por id             |
 | DELETE | /eraseCase/:id                      | Operação de deletar caso via id                   |
 
-## ▶ Como rodar
-Para clonar e rodar este projeto, você precisará do Git e do Node.js instalados em sua máquina.
-- Abra o terminal
-- Clone o repositório:
-  ```
-     git clone https://github.com/brenddamachado/VidaConsciente_Back.git
-  ```
-- Acesse a pasta do projeto:
+
+## 🚫 Problema com o Deploy
+Infelizmente, não foi possível realizar o deploy da aplicação nesta versão. Portanto, para rodar o projeto localmente, é necessário baixar e executar **tanto o repositório do front-end quanto o do back-end**.
+
+### ▶ Como rodar o projeto (front-end e back-end)
+Para clonar e rodar este projeto, siga os passos abaixo:
+
+1. **Clone os repositórios (front e back-end)**:
+   - Front-end:
+     ```bash
+     git clone https://github.com/brenddamachado/VidaConsciente
      ```
-  cd VidaConsciente_Back
+   - Back-end:
+     ```bash
+     git clone https://github.com/brenddamachado/VidaConsciente_Back
      ```
-- Faça a instalação das dependências:
-    ```
-  npm i
-    ```
-- Para compilar:
-    ```
-  npm run dev
-    ```
+
+2. **Instale as dependências**:
+   - Acesse as pastas do projeto e instale as dependências tanto no front-end quanto no back-end:
+     ```bash
+     cd VidaConsciente
+     npm install
+     ```
+     ```bash
+     cd ../VidaConsciente_Back
+     npm install
+     ```
+
+3. **Execute o front-end**:
+   - Após instalar as dependências, execute o comando abaixo para rodar o front-end:
+     ```bash
+     npm run dev
+     ```
+
+4. **Execute o back-end**:
+   - Em outra aba do terminal, acesse a pasta do back-end e rode o servidor:
+     ```bash
+     npm run dev
+     ```
+
+5. **Abra o navegador**:
+   - Acesse o projeto rodando em `http://localhost:3000` para visualizar o front-end.
+
   Se não quiser clonar o repositório pode baixar o zip do projeto, pelo botão code você verá o ``` Downloand ZIP ```, é só clicar que já irá baixar na sua máquina.
 
 ## 🧪 Testes
