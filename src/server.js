@@ -5,6 +5,7 @@ import { userRouter } from "./routes/user.routes.js";
 import { casesRouter } from "./routes/case.routes.js";
 import router from "./routes/local.routes.js";
 import { remindersRouter } from "./routes/reminders.routes.js";
+import { localRouter } from "./routes/local.routes.js";
 
 const app = express();
 const PORT = process.env.PORT || 3000; 
