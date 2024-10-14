@@ -2,7 +2,7 @@
   "name": "vidaconsciente_back",
   "version": "1.0.0",
   "description": "API Vida Consciente - Gerenciamento de DSTs/ISTs e locais de testagem/tratamento",
-  "main": "serve.js",
+"main": "src/server.js",
   "type": "module",
   "scripts": {
     "dev": "nodemon src/server.js",
