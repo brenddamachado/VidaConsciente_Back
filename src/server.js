@@ -24,5 +24,6 @@ app.use('/api/reminders', remindersRouter); // Rota específica para lembretes
 
 
 app.listen(PORT, () => {
-    console.log(`Server running at http://localhost:${PORT}`);
+    console.log(`Server running on port ${PORT}`);
 });
+
