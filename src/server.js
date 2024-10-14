@@ -21,7 +21,7 @@ app.use('/api/diseases', diseaseRouter);
 app.use('/api/users', userRouter);        // Rota específica para usuários
 app.use('/api/cases', casesRouter);       // Rota específica para casos
 app.use('/api/reminders', remindersRouter); // Rota específica para lembretes
-
+app.use('/api/locations', localRouter);
 
 app.listen(PORT, () => {
     console.log(`Server running on port ${PORT}`);
